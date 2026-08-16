@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Md Rakib Hasan · Food Technologist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0d0f1c;
+            --secondary: #f7b731;
+            --accent: #ff6b6b;
+            --gradient: linear-gradient(135deg, #f7b731 0%, #f77f31 100%);
+            --glass: rgba(255, 255, 255, 0.06);
+            --border: rgba(255, 255, 255, 0.08);
+            --white: #ffffff;
+            --gray: #b0b8c0;
+            --shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--primary);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--primary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary);
+            border-radius: 10px;
+        }
+
+        /* ─── Animated background ─── */
+        .bg-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(247, 183, 49, 0.06);
+            animation: floatParticle 20s infinite alternate ease-in-out;
+        }
+        .particle:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: -10%;
+            left: -10%;
+            animation-duration: 25s;
+        }
+        .particle:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            bottom: -5%;
+            right: -5%;
+            animation-duration: 30s;
+            background: rgba(255, 107, 107, 0.05);
+        }
+        .particle:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            top: 40%;
+            left: 60%;
+            animation-duration: 22s;
+            background: rgba(247, 183, 49, 0.04);
+        }
+        .particle:nth-child(4) {
+            width: 400px;
+            height: 400px;
+            bottom: 20%;
+            left: -20%;
+            animation-duration: 28s;
+            background: rgba(255, 107, 107, 0.03);
+        }
+
+        @keyframes floatParticle {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+            100% {
+                transform: translate(80px, 60px) scale(1.2);
+            }
+        }
+
+        /* ─── Container ─── */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ─── Navigation ─── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(13, 15, 28, 0.7);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid var(--border);
+            transition: 0.3s ease;
+        }
+        nav.scrolled {
+            background: rgba(13, 15, 28, 0.95);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 0;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.4rem;
+            letter-spacing: -0.02em;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: 0.3s ease;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: 0.3s ease;
+        }
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        .nav-links a:hover {
+            color: var(--white);
+        }
+
+        .nav-cta {
+            background: var(--gradient);
+            color: var(--primary) !important;
+            padding: 8px 24px;
+            border-radius: 100px;
+            font-weight: 700;
+            transition: 0.3s ease;
+        }
+        .nav-cta::after {
+            display: none !important;
+        }
+        .nav-cta:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 8px 30px rgba(247, 183, 49, 0.3);
+            color: var(--primary) !important;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 2.5px;
+            background: var(--white);
+            border-radius: 4px;
+            transition: 0.3s ease;
+        }
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* ─── Hero ─── */
+        .hero {
+            padding: 180px 0 100px;
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(247, 183, 49, 0.15);
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 6px 18px;
+            border-radius: 100px;
+            border: 1px solid rgba(247, 183, 49, 0.25);
+            margin-bottom: 20px;
+            backdrop-filter: blur(4px);
+        }
+
+        .hero h1 {
+            font-size: 4.2rem;
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            margin-bottom: 8px;
+        }
+        .hero h1 .highlight {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--gray);
+            margin-bottom: 12px;
+        }
+        .hero-subtitle strong {
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .hero-text {
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 480px;
+            margin: 16px 0 32px;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--gradient);
+            color: var(--primary);
+            padding: 16px 36px;
+            border-radius: 100px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            box-shadow: 0 8px 30px rgba(247, 183, 49, 0.25);
+        }
+        .btn-primary:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 16px 50px rgba(247, 183, 49, 0.4);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: transparent;
+            color: var(--white);
+            padding: 16px 36px;
+            border-radius: 100px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            font-size: 0.95rem;
+        }
+        .btn-secondary:hover {
+            border-color: var(--secondary);
+            color: var(--secondary);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(247, 183, 49, 0.1);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 48px;
+            margin-top: 40px;
+        }
+        .hero-stats-item .number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }
+        .hero-stats-item .label {
+            font-size: 0.85rem;
+            color: var(--gray);
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Hero visual */
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .hero-avatar {
+            width: 340px;
+            height: 340px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #1a1e2e, #0d0f1c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 7.5rem;
+            color: var(--secondary);
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6), inset 0 2px 0 rgba(255, 255, 255, 0.05);
+            position: relative;
+            border: 1px solid rgba(247, 183, 49, 0.2);
+            animation: pulseGlow 6s infinite alternate;
+        }
+        @keyframes pulseGlow {
+            0% {
+                box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6), 0 0 60px rgba(247, 183, 49, 0.05);
+            }
+            100% {
+                box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6), 0 0 120px rgba(247, 183, 49, 0.15);
+            }
+        }
+        .hero-avatar .initials {
+            font-weight: 800;
+            text-shadow: 0 4px 40px rgba(247, 183, 49, 0.2);
+        }
+
+        .floating-badge {
+            position: absolute;
+            background: rgba(13, 15, 28, 0.7);
+            backdrop-filter: blur(12px);
+            padding: 14px 22px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--white);
+            animation: floatBadge 6s ease-in-out infinite;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+        .floating-badge i {
+            color: var(--secondary);
+            font-size: 1.2rem;
+        }
+        .floating-badge:nth-child(2) {
+            top: 5%;
+            right: -8%;
+            animation-delay: 1s;
+        }
+        .floating-badge:nth-child(3) {
+            bottom: 15%;
+            left: -10%;
+            animation-delay: 2s;
+        }
+
+        @keyframes floatBadge {
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-16px);
+            }
+        }
+
+        /* ─── Section Titles ─── */
+        .section {
+            padding: 100px 0 80px;
+            position: relative;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-header .tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--secondary);
+            background: rgba(247, 183, 49, 0.1);
+            padding: 4px 18px;
+            border-radius: 100px;
+            border: 1px solid rgba(247, 183, 49, 0.15);
+            margin-bottom: 14px;
+        }
+        .section-header h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+        .section-header h2 span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .section-header p {
+            color: var(--gray);
+            max-width: 560px;
+            margin: 10px auto 0;
+            font-size: 1.05rem;
+        }
+
+        /* ─── Skills ─── */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+        }
+        .skill-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(8px);
+            padding: 28px 24px 24px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            transition: 0.4s ease;
+            text-align: center;
+        }
+        .skill-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--secondary);
+            background: rgba(247, 183, 49, 0.04);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        .skill-card .icon {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 12px;
+        }
+        .skill-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .skill-card p {
+            font-size: 0.85rem;
+            color: var(--gray);
+            line-height: 1.5;
+        }
+
+        /* ─── Experience ─── */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+            max-width: 820px;
+            margin: 0 auto;
+        }
+        .timeline-item {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(8px);
+            border-radius: 20px;
+            padding: 32px 36px;
+            border: 1px solid var(--border);
+            transition: 0.4s ease;
+            position: relative;
+        }
+        .timeline-item:hover {
+            border-color: var(--secondary);
+            transform: translateX(8px);
+            background: rgba(247, 183, 49, 0.04);
+        }
+        .timeline-item .meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            margin-bottom: 8px;
+        }
+        .timeline-item .title {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+        .timeline-item .company {
+            font-weight: 600;
+            color: var(--secondary);
+        }
+        .timeline-item .date {
+            font-size: 0.8rem;
+            color: var(--gray);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2px 14px;
+            border-radius: 100px;
+            font-weight: 500;
+        }
+        .timeline-item ul {
+            list-style: none;
+            margin-top: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .timeline-item ul li {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+            padding-left: 26px;
+            position: relative;
+            line-height: 1.6;
+        }
+        .timeline-item ul li::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-size: 0.6rem;
+            top: 4px;
+        }
+
+        /* ─── Education ─── */
+        .edu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .edu-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(8px);
+            border-radius: 20px;
+            padding: 28px 30px;
+            border: 1px solid var(--border);
+            transition: 0.4s ease;
+        }
+        .edu-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--secondary);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        .edu-card .degree {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        .edu-card .school {
+            color: var(--secondary);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+        .edu-card .year {
+            font-size: 0.8rem;
+            color: var(--gray);
+            margin-top: 4px;
+        }
+        .edu-card .detail {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.65);
+            margin-top: 12px;
+            line-height: 1.6;
+            border-top: 1px solid var(--border);
+            padding-top: 12px;
+        }
+
+        /* ─── Research ─── */
+        .research-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .research-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(8px);
+            border-radius: 20px;
+            padding: 28px 30px;
+            border: 1px solid var(--border);
+            transition: 0.4s ease;
+        }
+        .research-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--secondary);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        .research-card .badge {
+            display: inline-block;
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            background: rgba(247, 183, 49, 0.1);
+            color: var(--secondary);
+            padding: 2px 14px;
+            border-radius: 100px;
+            border: 1px solid rgba(247, 183, 49, 0.15);
+            margin-bottom: 10px;
+        }
+        .research-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .research-card p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.65);
+            line-height: 1.6;
+        }
+        .research-card .pub-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 12px;
+            color: var(--secondary);
+            font-weight: 500;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: 0.3s ease;
+        }
+        .research-card .pub-link:hover {
+            gap: 12px;
+            color: var(--white);
+        }
+
+        /* ─── Certifications ─── */
+        .cert-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            justify-content: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .cert-tag {
+            background: rgba(255, 255, 255, 0.04);
+            padding: 12px 26px;
+            border-radius: 100px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--white);
+            border: 1px solid var(--border);
+            transition: 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            backdrop-filter: blur(4px);
+        }
+        .cert-tag i {
+            color: var(--secondary);
+        }
+        .cert-tag:hover {
+            border-color: var(--secondary);
+            background: rgba(247, 183, 49, 0.06);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ─── Contact ─── */
+        .contact-wrap {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.03), rgba(247, 183, 49, 0.03));
+            border-radius: 24px;
+            padding: 56px 64px;
+            border: 1px solid var(--border);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+            backdrop-filter: blur(8px);
+        }
+        .contact-wrap h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+        .contact-wrap h2 span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .contact-wrap p {
+            color: var(--gray);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-top: 8px;
+        }
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .contact-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 1rem;
+            transition: 0.3s ease;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .contact-links a:hover {
+            color: var(--secondary);
+            transform: translateX(8px);
+        }
+        .contact-links a i {
+            width: 24px;
+            font-size: 1.2rem;
+            color: var(--secondary);
+        }
+
+        /* ─── Footer ─── */
+        footer {
+            text-align: center;
+            padding: 40px 0 32px;
+            color: var(--gray);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+            margin-top: 20px;
+        }
+        footer span {
+            color: var(--secondary);
+        }
+
+        /* ─── Responsive ─── */
+        @media (max-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-text {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .hero-stats {
+                justify-content: center;
+            }
+            .hero-avatar {
+                width: 220px;
+                height: 220px;
+                font-size: 4.5rem;
+            }
+            .floating-badge {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+            .research-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-wrap {
+                grid-template-columns: 1fr;
+                padding: 36px 28px;
+                text-align: center;
+            }
+            .contact-links a {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: rgba(13, 15, 28, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 80px 32px 40px;
+                gap: 24px;
+                box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
+                transition: 0.4s ease;
+                align-items: flex-start;
+                border-left: 1px solid var(--border);
+            }
+            .nav-links.open {
+                right: 0;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .nav-cta {
+                margin-top: 8px;
+            }
+            .hero {
+                padding: 140px 0 60px;
+                min-height: auto;
+            }
+            .hero h1 {
+                font-size: 2.6rem;
+            }
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            .hero-stats {
+                gap: 28px;
+                flex-wrap: wrap;
+            }
+            .hero-stats-item .number {
+                font-size: 1.8rem;
+            }
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+            .timeline-item {
+                padding: 24px 20px;
+            }
+            .timeline-item .meta {
+                flex-direction: column;
+                gap: 4px;
+            }
+            .edu-grid {
+                grid-template-columns: 1fr;
+            }
+            .skills-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .contact-wrap {
+                padding: 28px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-avatar {
+                width: 160px;
+                height: 160px;
+                font-size: 3.5rem;
+            }
+            .btn-primary,
+            .btn-secondary {
+                padding: 12px 24px;
+                font-size: 0.85rem;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ─── Particles ─── -->
+    <div class="bg-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- ─── Navigation ─── -->
+    <nav id="navbar">
+        <div class="container nav-inner">
+            <div class="logo">Rakib<span>.</span></div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero" class="active">Home</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#contact" class="nav-cta">Contact</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ─── Hero ─── -->
+    <section class="hero" id="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-leaf" style="margin-right:8px;"></i> Food Innovation &amp; Quality
+                </div>
+                <h1>
+                    Md Rakib <br /><span class="highlight">Hasan</span>
+                </h1>
+                <div class="hero-subtitle">
+                    <strong>Food Technologist</strong> · R&amp;D · QA/QC
+                </div>
+                <p class="hero-text">
+                    Food Engineering &amp; Innovation professional with <strong style="color:var(--secondary);">3+ years</strong> of
+                    industrial R&amp;D experience in beverage &amp; dairy product development.
+                    RSPH Level 3 HACCP certified &amp; ISO 22000:2018 trained.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn-primary">
+                        <i class="fas fa-paper-plane"></i> Get in Touch
+                    </a>
+                    <a href="#experience" class="btn-secondary">
+                        <i class="fas fa-chevron-down"></i> View Work
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stats-item">
+                        <span class="number">3+</span>
+                        <span class="label">Years R&amp;D</span>
+                    </div>
+                    <div class="hero-stats-item">
+                        <span class="number">15+</span>
+                        <span class="label">Products Launched</span>
+                    </div>
+                    <div class="hero-stats-item">
+                        <span class="number">2</span>
+                        <span class="label">Publications</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-avatar">
+                    <span class="initials">RH</span>
+                </div>
+                <div class="floating-badge" style="top:5%; right:-8%;">
+                    <i class="fas fa-flask"></i> R&amp;D
+                </div>
+                <div class="floating-badge" style="bottom:15%; left:-10%;">
+                    <i class="fas fa-clipboard-check"></i> QA/QC
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Skills ─── -->
+    <section class="section" id="skills">
+        <div class="container">
+            <div class="section-header">
+                <span class="tag">Expertise</span>
+                <h2>Core <span>Competencies</span></h2>
+                <p>Quality assurance, product development, food safety &amp; sensory science.</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="icon"><i class="fas fa-microscope"></i></div>
+                    <h4>QA/QC &amp; HACCP</h4>
+                    <p>RSPH Level 3 HACCP, ISO 22000, GMP, SOPs &amp; compliance.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="icon"><i class="fas fa-flask"></i></div>
+                    <h4>R&amp;D &amp; NPD</h4>
+                    <p>Formulation, pilot-scale trials &amp; commercialisation.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="icon"><i class="fas fa-utensils"></i></div>
+                    <h4>Sensory &amp; Shelf-life</h4>
+                    <p>Sensory evaluation, stability assessment &amp; monitoring.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="icon"><i class="fas fa-file-alt"></i></div>
+                    <h4>Technical Documentation</h4>
+                    <p>SOPs, batch records &amp; manufacturing instructions.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="icon"><i class="fas fa-chart-bar"></i></div>
+                    <h4>Data &amp; Research</h4>
+                    <p>Qualtrics, IBM SPSS, experimental design &amp; interpretation.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="icon"><i class="fas fa-boxes"></i></div>
+                    <h4>Production Support</h4>
+                    <p>Process control, raw material evaluation &amp; team supervision.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Experience ─── -->
+    <section class="section" id="experience" style="background: rgba(255,255,255,0.01);">
+        <div class="container">
+            <div class="section-header">
+                <span class="tag">Career</span>
+                <h2>Professional <span>Experience</span></h2>
+                <p>Industrial R&amp;D, production support &amp; food safety leadership.</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="meta">
+                        <span class="title">Supervisor</span>
+                        <span class="date">2026 – Present</span>
+                    </div>
+                    <div class="company">Langosteria UK, London</div>
+                    <ul>
+                        <li>Supervise daily restaurant operations and team performance.</li>
+                        <li>Conduct food safety, hygiene and HACCP checks.</li>
+                        <li>Monitor food handling, storage, temperature and cleanliness.</li>
+                        <li>Train staff on food safety, SOPs and service standards.</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="meta">
+                        <span class="title">Research &amp; Development Executive</span>
+                        <span class="date">Oct 2022 – Jan 2025</span>
+                    </div>
+                    <div class="company">Akij Food &amp; Beverage Ltd., Bangladesh</div>
+                    <ul>
+                        <li>Developed &amp; optimised beverage and dairy formulations from lab to pilot scale.</li>
+                        <li>Led NPD trials for fruit drinks, electrolyte drinks, malt beverages &amp; flavoured drinks.</li>
+                        <li>Prepared SOPs, technical reports, batch documentation &amp; manufacturing instructions.</li>
+                        <li>Conducted sensory evaluation, shelf-life &amp; stability studies.</li>
+                        <li>Coordinated with QA/QC teams to ensure regulatory compliance.</li>
+                        <li>Supervised 50+ production staff ensuring GMP and hygiene compliance.</li>
+                        <li>Evaluated alternative raw materials &amp; packaging to reduce costs.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Education ─── -->
+    <section class="section" id="education">
+        <div class="container">
+            <div class="section-header">
+                <span class="tag">Academic</span>
+                <h2>Education</h2>
+                <p>Advanced training in food innovation, engineering &amp; sustainable systems.</p>
+            </div>
+            <div class="edu-grid">
+                <div class="edu-card">
+                    <div class="degree">MSc Food Innovation</div>
+                    <div class="school">University of Greenwich, London, UK</div>
+                    <div class="year">2025 – 2026</div>
+                    <div class="detail">
+                        <strong style="color:var(--secondary);">Dissertation:</strong> Consumer Perceptions towards Smart Packaging in Bangladesh.
+                        Quantitative research using Qualtrics &amp; IBM SPSS. Module: Alternative Proteins.
+                    </div>
+                </div>
+                <div class="edu-card">
+                    <div class="degree">MSc Food &amp; Process Engineering</div>
+                    <div class="school">HSTU, Bangladesh</div>
+                    <div class="year">2021 – 2022</div>
+                    <div class="detail">
+                        Advanced study in food processing, packaging &amp; quality systems.
+                    </div>
+                </div>
+                <div class="edu-card">
+                    <div class="degree">BSc Food &amp; Process Engineering</div>
+                    <div class="school">HSTU, Bangladesh</div>
+                    <div class="year">2016 – 2021</div>
+                    <div class="detail">
+                        Foundation in food engineering, thermodynamics, unit operations &amp; food chemistry.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Research ─── -->
+    <section class="section" id="research" style="background: rgba(255,255,255,0.01);">
+        <div class="container">
+            <div class="section-header">
+                <span class="tag">Research</span>
+                <h2>Publications &amp; <span>Projects</span></h2>
+                <p>Academic research in food packaging, drying kinetics &amp; quality assessment.</p>
+            </div>
+            <div class="research-grid">
+                <div class="research-card">
+                    <span class="badge">Publication</span>
+                    <h4>Effect of Temperature on Drying Kinetics, Physico-Chemical Properties &amp; Antioxidant Activity of Cabinet Dried Whole Jujubes</h4>
+                    <p>2025 · DOI: 10.53430/ijmru.2025.9.2.0021</p>
+                    <a href="#" class="pub-link" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> View Publication
+                    </a>
+                </div>
+                <div class="research-card">
+                    <span class="badge">Under Review</span>
+                    <h4>Effect of Microwave Heating on Quality Attributes of Sugarcane Juice During Refrigerated Storage</h4>
+                    <p>Submitted to Journal of Food and Nutrition Research.</p>
+                    <span style="display:inline-block;margin-top:8px;font-size:0.85rem;color:var(--gray);">
+                        <i class="fas fa-microscope"></i> Experimental assessment &amp; data interpretation
+                    </span>
+                </div>
+                <div class="research-card">
+                    <span class="badge">Project</span>
+                    <h4>Gelatin-CMC Biodegradable Packaging Films</h4>
+                    <p>Research Assistant · HSTU · UGC-funded project.</p>
+                    <p style="margin-top:6px;font-size:0.9rem;color:var(--gray);">
+                        Development &amp; laboratory evaluation of biodegradable films for baked products.
+                    </p>
+                </div>
+                <div class="research-card">
+                    <span class="badge">Dissertation</span>
+                    <h4>Consumer Perceptions towards Smart Packaging in Bangladesh</h4>
+                    <p>MSc Food Innovation · University of Greenwich</p>
+                    <p style="margin-top:6px;font-size:0.9rem;color:var(--gray);">
+                        Quantitative study using Qualtrics &amp; IBM SPSS · Survey design &amp; statistical analysis.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Certifications ─── -->
+    <section class="section" id="certifications" style="padding-top:40px;">
+        <div class="container">
+            <div class="section-header">
+                <span class="tag">Credentials</span>
+                <h2>Certifications &amp; <span>Training</span></h2>
+            </div>
+            <div class="cert-grid">
+                <span class="cert-tag"><i class="fas fa-certificate"></i> RSPH Level 3 HACCP</span>
+                <span class="cert-tag"><i class="fas fa-certificate"></i> ISO 22000:2018</span>
+                <span class="cert-tag"><i class="fas fa-certificate"></i> GMP &amp; GLP</span>
+                <span class="cert-tag"><i class="fas fa-certificate"></i> FSSC</span>
+                <span class="cert-tag"><i class="fas fa-certificate"></i> Productivity Improvement Tools</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Contact ─── -->
+    <section class="section" id="contact" style="padding-top:40px;">
+        <div class="container">
+            <div class="contact-wrap">
+                <div>
+                    <h2>Let's <span>Connect</span></h2>
+                    <p>
+                        Open to R&amp;D, QA/QC, production &amp; research opportunities.
+                        Feel free to reach out for collaboration or discussion.
+                    </p>
+                    <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+                        <span style="background:rgba(255,255,255,0.04);padding:6px 18px;border-radius:100px;font-size:0.8rem;color:var(--gray);border:1px solid var(--border);">
+                            <i class="fas fa-map-pin" style="color:var(--secondary);"></i> London, UK
+                        </span>
+                        <span style="background:rgba(255,255,255,0.04);padding:6px 18px;border-radius:100px;font-size:0.8rem;color:var(--gray);border:1px solid var(--border);">
+                            <i class="fas fa-clock" style="color:var(--secondary);"></i> Available for work
+                        </span>
+                    </div>
+                </div>
+                <div class="contact-links">
+                    <a href="mailto:rakibhasan24.rh@gmail.com">
+                        <i class="fas fa-envelope"></i> rakibhasan24.rh@gmail.com
+                    </a>
+                    <a href="tel:+4407404127872">
+                        <i class="fas fa-phone-alt"></i> +44 7404 127872
+                    </a>
+                    <a href="#" target="_blank">
+                        <i class="fab fa-linkedin-in"></i> linkedin.com/in/rakib-hasan24
+                    </a>
+                    <a href="#">
+                        <i class="fas fa-map-marker-alt"></i> E15 3PN, 18 Gee Road, London
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Footer ─── -->
+    <footer>
+        <div class="container">
+            <p>
+                &copy; 2026 <span>Md Rakib Hasan</span> — Food Technologist.
+                Crafted with <i class="fas fa-heart" style="color:var(--secondary);font-size:0.8rem;"></i>
+            </p>
+        </div>
+    </footer>
+
+    <!-- ─── JavaScript ─── -->
+    <script>
+        // ─── Navbar scroll ───
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 40);
+        });
+
+        // ─── Hamburger ───
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('open');
+        });
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('open');
+            });
+        });
+
+        // ─── Active nav link ───
+        const sections = document.querySelectorAll('section[id]');
+        const navItems = document.querySelectorAll('.nav-links a:not(.nav-cta)');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                if (window.scrollY >= section.offsetTop - 120) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navItems.forEach(link => {
+                link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+            });
+        });
+
+        // ─── Reveal animations ───
+        const items = document.querySelectorAll('.skill-card, .timeline-item, .edu-card, .research-card, .cert-tag, .hero-stats-item');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.08 });
+        items.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
