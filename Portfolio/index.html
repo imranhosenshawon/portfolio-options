@@ -1,0 +1,1588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Md Rakib Hasan | Food Innovation & R&D</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0d0f1c;
+            --secondary: #f7b731;
+            --accent: #ff6b6b;
+            --gradient: linear-gradient(135deg, #f7b731 0%, #f77f31 100%);
+            --glass: rgba(255, 255, 255, 0.06);
+            --border: rgba(255, 255, 255, 0.08);
+            --white: #ffffff;
+            --gray: #b0b8c0;
+            --shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--primary);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--primary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary);
+            border-radius: 10px;
+        }
+
+        /* ─── Animated background ─── */
+        .bg-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(247, 183, 49, 0.06);
+            animation: floatParticle 20s infinite alternate ease-in-out;
+        }
+        .particle:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: -10%;
+            left: -10%;
+            animation-duration: 25s;
+        }
+        .particle:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            bottom: -5%;
+            right: -5%;
+            animation-duration: 30s;
+            background: rgba(255, 107, 107, 0.05);
+        }
+        .particle:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            top: 40%;
+            left: 60%;
+            animation-duration: 22s;
+            background: rgba(247, 183, 49, 0.04);
+        }
+        .particle:nth-child(4) {
+            width: 400px;
+            height: 400px;
+            bottom: 20%;
+            left: -20%;
+            animation-duration: 28s;
+            background: rgba(255, 107, 107, 0.03);
+        }
+
+        @keyframes floatParticle {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+            100% {
+                transform: translate(80px, 60px) scale(1.2);
+            }
+        }
+
+        /* ─── Container ─── */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ─── Navigation ─── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(13, 15, 28, 0.7);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid var(--border);
+            transition: 0.3s ease;
+        }
+        nav.scrolled {
+            background: rgba(13, 15, 28, 0.95);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 0;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.4rem;
+            letter-spacing: -0.02em;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: 0.3s ease;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: 0.3s ease;
+        }
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        .nav-links a:hover {
+            color: var(--white);
+        }
+
+        .nav-cta {
+            background: var(--gradient);
+            color: var(--primary) !important;
+            padding: 8px 24px;
+            border-radius: 100px;
+            font-weight: 700;
+            transition: 0.3s ease;
+        }
+        .nav-cta::after {
+            display: none !important;
+        }
+        .nav-cta:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 8px 30px rgba(247, 183, 49, 0.3);
+            color: var(--primary) !important;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 2.5px;
+            background: var(--white);
+            border-radius: 4px;
+            transition: 0.3s ease;
+        }
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* ─── Hero ─── */
+        .hero {
+            padding: 180px 0 100px;
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(247, 183, 49, 0.15);
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 6px 18px;
+            border-radius: 100px;
+            border: 1px solid rgba(247, 183, 49, 0.25);
+            margin-bottom: 20px;
+            backdrop-filter: blur(4px);
+        }
+
+        .hero h1 {
+            font-size: 4.2rem;
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            margin-bottom: 8px;
+        }
+        .hero h1 .highlight {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--gray);
+            margin-bottom: 12px;
+        }
+        .hero-subtitle strong {
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .hero-text {
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 520px;
+            margin: 16px 0 32px;
+            line-height: 1.8;
+            text-align: justify;
+            text-justify: inter-word;
+            hyphens: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--gradient);
+            color: var(--primary);
+            padding: 16px 36px;
+            border-radius: 100px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            box-shadow: 0 8px 30px rgba(247, 183, 49, 0.25);
+        }
+        .btn-primary:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 16px 50px rgba(247, 183, 49, 0.4);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: transparent;
+            color: var(--white);
+            padding: 16px 36px;
+            border-radius: 100px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            font-size: 0.95rem;
+        }
+        .btn-secondary:hover {
+            border-color: var(--secondary);
+            color: var(--secondary);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(247, 183, 49, 0.1);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 48px;
+            margin-top: 40px;
+        }
+        .hero-stats-item .number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }
+        .hero-stats-item .label {
+            font-size: 0.85rem;
+            color: var(--gray);
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Hero visual */
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .hero-avatar {
+            width: 350px;
+            height: 350px;
+            border-radius: 28px;
+            padding: 0;
+            background: linear-gradient(145deg, #1a1e2e, #0d0f1c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 7.5rem;
+            color: var(--secondary);
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6), inset 0 2px 0 rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(247, 183, 49, 0.2);
+            animation: pulseGlow 6s infinite alternate;
+        }
+        @keyframes pulseGlow {
+            0% {
+                box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6), 0 0 60px rgba(247, 183, 49, 0.05);
+            }
+            100% {
+                box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6), 0 0 120px rgba(247, 183, 49, 0.15);
+            }
+        }
+        .hero-avatar { overflow:hidden; padding:0px; }
+        .hero-photo { position: absolute; width: 100%; height: 100%; object-fit: cover; object-position: top center; max-width: none; left: 50%; bottom: 0; transform: translateX(-50%); display: block; }
+        .hero-avatar::after { content:''; position:absolute; inset:10px; border:1px solid rgba(247,183,49,.28); border-radius:22px; pointer-events:none; z-index: 3; }
+        .hero-avatar .initials { font-weight: 800; text-shadow: 0 4px 40px rgba(247, 183, 49, 0.2); }
+
+        .floating-badge {
+            position: absolute;
+            background: rgba(13, 15, 28, 0.7);
+            backdrop-filter: blur(12px);
+            padding: 14px 22px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--white);
+            animation: floatBadge 6s ease-in-out infinite;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+        .floating-badge i {
+            color: var(--secondary);
+            font-size: 1.2rem;
+        }
+        .floating-badge:nth-child(2) {
+            top: 5%;
+            right: -8%;
+            animation-delay: 1s;
+        }
+        .floating-badge:nth-child(3) {
+            bottom: 15%;
+            left: -10%;
+            animation-delay: 2s;
+        }
+
+        @keyframes floatBadge {
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-16px);
+            }
+        }
+
+        /* ─── Section Titles ─── */
+        .section {
+            padding: 100px 0 80px;
+            position: relative;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-header .tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--secondary);
+            background: rgba(247, 183, 49, 0.1);
+            padding: 4px 18px;
+            border-radius: 100px;
+            border: 1px solid rgba(247, 183, 49, 0.15);
+            margin-bottom: 14px;
+        }
+        .section-header h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+        .section-header h2 span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .section-header p {
+            color: var(--gray);
+            max-width: 560px;
+            margin: 10px auto 0;
+            font-size: 1.05rem;
+        }
+
+        /* ─── Skills ─── */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+        .skill-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(8px);
+            padding: 28px 24px 24px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            transition: 0.4s ease;
+            text-align: center;
+        }
+        .skill-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--secondary);
+            background: rgba(247, 183, 49, 0.04);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        .skill-card .icon {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 12px;
+        }
+        .skill-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .skill-card p {
+            font-size: 0.85rem;
+            color: var(--gray);
+            line-height: 1.5;
+        }
+
+        /* ─── Experience ─── */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+            max-width: 820px;
+            margin: 0 auto;
+        }
+        .timeline-item {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(8px);
+            border-radius: 20px;
+            padding: 32px 36px;
+            border: 1px solid var(--border);
+            transition: 0.4s ease;
+            position: relative;
+        }
+        .timeline-item:hover {
+            border-color: var(--secondary);
+            transform: translateX(8px);
+            background: rgba(247, 183, 49, 0.04);
+        }
+        .timeline-item .meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            margin-bottom: 8px;
+        }
+        .timeline-item .title {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+        .timeline-item .company {
+            font-weight: 600;
+            color: var(--secondary);
+        }
+        .timeline-item .date {
+            font-size: 0.8rem;
+            color: var(--gray);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2px 14px;
+            border-radius: 100px;
+            font-weight: 500;
+        }
+        .timeline-item ul {
+            list-style: none;
+            margin-top: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .timeline-item ul li {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+            padding-left: 26px;
+            position: relative;
+            line-height: 1.6;
+        }
+        .timeline-item ul li::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-size: 0.6rem;
+            top: 4px;
+        }
+
+        /* ─── Education ─── */
+        .edu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .edu-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(8px);
+            border-radius: 20px;
+            padding: 28px 30px;
+            border: 1px solid var(--border);
+            transition: 0.4s ease;
+        }
+        .edu-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--secondary);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        .edu-card .degree {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        .edu-card .school {
+            color: var(--secondary);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+        .edu-card .year {
+            font-size: 0.8rem;
+            color: var(--gray);
+            margin-top: 4px;
+        }
+        .edu-card .detail {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.65);
+            margin-top: 12px;
+            line-height: 1.6;
+            border-top: 1px solid var(--border);
+            padding-top: 12px;
+        }
+
+        /* ─── Research ─── */
+        .research-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .research-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(8px);
+            border-radius: 20px;
+            padding: 28px 30px;
+            border: 1px solid var(--border);
+            transition: 0.4s ease;
+        }
+        .research-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--secondary);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        .research-card .badge {
+            display: inline-block;
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            background: rgba(247, 183, 49, 0.1);
+            color: var(--secondary);
+            padding: 2px 14px;
+            border-radius: 100px;
+            border: 1px solid rgba(247, 183, 49, 0.15);
+            margin-bottom: 10px;
+        }
+        .research-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .research-card p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.65);
+            line-height: 1.6;
+        }
+        .research-card .pub-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 12px;
+            color: var(--secondary);
+            font-weight: 500;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: 0.3s ease;
+        }
+        .research-card .pub-link:hover {
+            gap: 12px;
+            color: var(--white);
+        }
+
+        /* ─── Certifications ─── */
+        .cert-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            justify-content: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .cert-tag {
+            background: rgba(255, 255, 255, 0.04);
+            padding: 12px 26px;
+            border-radius: 100px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--white);
+            border: 1px solid var(--border);
+            transition: 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            backdrop-filter: blur(4px);
+        }
+        .cert-tag i {
+            color: var(--secondary);
+        }
+        .cert-tag:hover {
+            border-color: var(--secondary);
+            background: rgba(247, 183, 49, 0.06);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ─── Contact ─── */
+        .contact-wrap {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.03), rgba(247, 183, 49, 0.03));
+            border-radius: 24px;
+            padding: 56px 64px;
+            border: 1px solid var(--border);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+            backdrop-filter: blur(8px);
+        }
+        .contact-wrap h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+        .contact-wrap h2 span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .contact-wrap p {
+            color: var(--gray);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-top: 8px;
+        }
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .contact-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 1rem;
+            transition: 0.3s ease;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .contact-links a:hover {
+            color: var(--secondary);
+            transform: translateX(8px);
+        }
+        .contact-links a i {
+            width: 24px;
+            font-size: 1.2rem;
+            color: var(--secondary);
+        }
+
+        /* ─── Footer ─── */
+        footer {
+            text-align: center;
+            padding: 40px 0 32px;
+            color: var(--gray);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+            margin-top: 20px;
+        }
+        footer span {
+            color: var(--secondary);
+        }
+
+
+        .visual-certs { align-items:stretch; }
+        .cert-card { background:rgba(255,255,255,.03); border:1px solid var(--border); border-radius:20px; overflow:hidden; transition:.35s ease; }
+        .cert-card:hover { transform:translateY(-7px); border-color:var(--secondary); box-shadow:0 22px 55px rgba(0,0,0,.3); }
+        .cert-image { height:220px; background:#fff; overflow:hidden; display:flex; align-items:center; justify-content:center; }
+        .cert-image img { width:100%; height:100%; object-fit:cover; }
+        .cert-body { padding:22px 24px 24px; }
+        .cert-mini { display:inline-block; font-size:.62rem; text-transform:uppercase; letter-spacing:.12em; color:var(--secondary); border:1px solid rgba(247,183,49,.18); background:rgba(247,183,49,.08); padding:4px 10px; border-radius:999px; margin-bottom:10px; }
+        .cert-body h4 { font-size:1.02rem; line-height:1.35; margin-bottom:7px; }
+        .cert-body p { color:var(--gray); font-size:.84rem; line-height:1.6; }
+        .achievement-grid { display:grid; grid-template-columns:1.3fr .7fr; gap:24px; }
+        .achievement-main { min-height:420px; position:relative; border:1px solid var(--border); border-radius:22px; overflow:hidden; }
+        .achievement-main img { width:100%; height:100%; min-height:420px; object-fit:cover; display:block; transition:.4s ease; }
+        .achievement-main:hover img { transform:scale(1.025); }
+        .achievement-main > div { position:absolute; left:20px; right:20px; bottom:20px; padding:17px 19px; border-radius:15px; background:rgba(8,10,17,.8); backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,.1); }
+        .achievement-main strong { display:block; font-size:1rem; }
+        .achievement-main span { color:var(--gray); font-size:.8rem; }
+        .achievement-side { display:grid; gap:24px; }
+        .lead-card { padding:30px; background:rgba(255,255,255,.03); border:1px solid var(--border); border-radius:20px; }
+        .lead-card i { color:var(--secondary); font-size:1.6rem; margin-bottom:14px; }
+        .lead-card h4 { font-size:1.05rem; margin-bottom:7px; }
+        .lead-card p { color:var(--gray); font-size:.88rem; }
+        .lead-card a { color:var(--secondary); }
+        @media (max-width: 1024px) { .achievement-grid { grid-template-columns:1fr; } }
+
+
+        /* --- Professional gallery carousel --- */
+        .gallery-shell {
+            position: relative;
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+        .gallery-viewport {
+            overflow: hidden;
+            border-radius: 24px;
+        }
+        .gallery-grid {
+            display: flex;
+            gap: 20px;
+            transition: transform .55s cubic-bezier(.22,.61,.36,1);
+            will-change: transform;
+        }
+        .gallery-card {
+            flex: 0 0 calc((100% - 40px) / 3);
+            position: relative;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+            border-radius: 20px;
+            background:#111420;
+            border:1px solid var(--border);
+            cursor:pointer;
+            transition:.4s ease;
+        }
+        .gallery-card.is-hidden { display:none; }
+        .gallery-card img {
+            width:100%; height:100%; object-fit:cover; display:block;
+            transition:transform .5s ease, filter .5s ease;
+        }
+        .gallery-card::after {
+            content:''; position:absolute; inset:0;
+            background:linear-gradient(180deg,rgba(4,6,12,0) 42%,rgba(4,6,12,.9) 100%);
+            pointer-events:none;
+        }
+        .gallery-card:hover { transform:translateY(-5px); border-color:rgba(247,183,49,.55); box-shadow:0 22px 60px rgba(0,0,0,.34); }
+        .gallery-card:hover img { transform:scale(1.045); filter:saturate(1.08); }
+        .gallery-caption { position:absolute; left:18px; right:18px; bottom:16px; z-index:2; }
+        .gallery-caption strong { display:block; font-size:1rem; }
+        .gallery-caption span { display:block; margin-top:3px; color:#c3c9d1; font-size:.8rem; }
+        .gallery-filter {
+            display:flex; justify-content:center; flex-wrap:wrap; gap:10px; margin:-24px auto 24px;
+        }
+        .gallery-filter button {
+            border:1px solid var(--border); background:rgba(255,255,255,.035); color:#d8dde4;
+            border-radius:999px; padding:8px 15px; font:inherit; font-size:.78rem; cursor:pointer; transition:.3s ease;
+        }
+        .gallery-filter button.active, .gallery-filter button:hover { border-color:var(--secondary); color:var(--secondary); background:rgba(247,183,49,.08); }
+        .gallery-arrow {
+            position:absolute; top:50%; transform:translateY(-50%); z-index:5;
+            width:46px; height:46px; border-radius:50%; border:1px solid rgba(247,183,49,.28);
+            background:rgba(13,15,28,.88); color:#fff; cursor:pointer; display:flex; align-items:center; justify-content:center;
+            box-shadow:0 14px 36px rgba(0,0,0,.28); transition:.3s ease;
+        }
+        .gallery-arrow:hover:not(:disabled){ background:rgba(247,183,49,.12); border-color:var(--secondary); color:var(--secondary); }
+        .gallery-arrow:disabled { opacity:.35; cursor:not-allowed; }
+        .gallery-arrow.prev { left:-20px; }
+        .gallery-arrow.next { right:-20px; }
+        .gallery-meta { display:flex; justify-content:center; align-items:center; gap:12px; margin-top:14px; color:var(--gray); font-size:.78rem; }
+        .gallery-meta .count { color:var(--secondary); font-weight:700; }
+        .lightbox { position:fixed; inset:0; background:rgba(2,4,8,.94); display:none; align-items:center; justify-content:center; z-index:2200; padding:24px; }
+        .lightbox.open { display:flex; }
+        .lightbox img { max-width:min(1100px,94vw); max-height:84vh; object-fit:contain; border-radius:16px; box-shadow:0 40px 120px rgba(0,0,0,.55); }
+        .lightbox-close { position:absolute; top:18px; right:22px; width:44px; height:44px; border-radius:50%; border:1px solid var(--border); background:rgba(255,255,255,.06); color:#fff; font-size:1.5rem; cursor:pointer; }
+        .lightbox-label { position:absolute; bottom:28px; left:50%; transform:translateX(-50%); background:rgba(13,15,28,.8); padding:8px 16px; border:1px solid var(--border); border-radius:999px; color:#fff; font-size:.85rem; }
+
+        /* --- Credential cards --- */
+        .credential-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; max-width:1100px; margin:0 auto; align-items:stretch; }
+        .credential-card { display:flex; flex-direction:column; height:100%; background:rgba(255,255,255,.03); border:1px solid var(--border); border-radius:20px; overflow:hidden; transition:.35s ease; }
+        .credential-card:hover { transform:translateY(-7px); border-color:var(--secondary); box-shadow:0 22px 55px rgba(0,0,0,.3); }
+        .credential-preview { height:250px; background:#0b0d16; display:flex; align-items:center; justify-content:center; padding:12px; overflow:hidden; }
+        .credential-preview img { width:100%; height:100%; object-fit:contain; border-radius:12px; }
+        .credential-body { padding:22px 24px 24px; display:flex; flex:1; flex-direction:column; }
+        .credential-body .mini { align-self:flex-start; }
+        .credential-body h4 { font-size:1.02rem; line-height:1.4; margin:10px 0 8px; }
+        .credential-body p { color:var(--gray); font-size:.84rem; line-height:1.6; }
+        .credential-actions { margin-top:auto; padding-top:18px; }
+        .mini-btn { display:inline-flex; align-items:center; gap:8px; text-decoration:none; border:1px solid var(--border); background:rgba(255,255,255,.03); color:#fff; padding:10px 15px; border-radius:12px; font-size:.8rem; transition:.3s ease; }
+        .mini-btn:hover { border-color:var(--secondary); color:var(--secondary); }
+
+        /* --- Achievement + documents --- */
+        .achievement-grid { display:grid; grid-template-columns:1.3fr .7fr; gap:24px; }
+        .achievement-main { min-height:420px; position:relative; border:1px solid var(--border); border-radius:22px; overflow:hidden; }
+        .achievement-main img { width:100%; height:100%; min-height:420px; object-fit:cover; display:block; transition:.4s ease; }
+        .achievement-main:hover img { transform:scale(1.025); }
+        .achievement-main > div { position:absolute; left:20px; right:20px; bottom:20px; padding:17px 19px; border-radius:15px; background:rgba(8,10,17,.8); backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,.1); }
+        .achievement-main strong { display:block; font-size:1rem; }
+        .achievement-main span { color:var(--gray); font-size:.8rem; }
+        .achievement-side { display:grid; gap:24px; }
+        .lead-card { padding:30px; background:rgba(255,255,255,.03); border:1px solid var(--border); border-radius:20px; }
+        .lead-card i { color:var(--secondary); font-size:1.6rem; margin-bottom:14px; }
+        .lead-card h4 { font-size:1.05rem; margin-bottom:7px; }
+        .lead-card p { color:var(--gray); font-size:.88rem; line-height:1.65; }
+        .lead-card a { color:var(--secondary); }
+        .document-links { display:flex; flex-wrap:wrap; gap:10px; margin-top:18px; }
+        .document-link { display:inline-flex; align-items:center; gap:8px; padding:10px 13px; border:1px solid rgba(247,183,49,.22); background:rgba(247,183,49,.05); border-radius:12px; color:#f4f1e8; text-decoration:none; font-size:.78rem; transition:.3s ease; }
+        .document-link:hover { border-color:var(--secondary); color:var(--secondary); transform:translateY(-2px); }
+
+        /* ─── Responsive ─── */
+        @media (max-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-text {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .hero-stats {
+                justify-content: center;
+            }
+            .hero-avatar {
+                width: 260px;
+                height: 260px;
+                font-size: 4.5rem;
+            }
+            .floating-badge {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+            .research-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-wrap {
+                grid-template-columns: 1fr;
+                padding: 36px 28px;
+                text-align: center;
+            }
+            .contact-links a {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: rgba(13, 15, 28, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 80px 32px 40px;
+                gap: 24px;
+                box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
+                transition: 0.4s ease;
+                align-items: flex-start;
+                border-left: 1px solid var(--border);
+            }
+            .nav-links.open {
+                right: 0;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .nav-cta {
+                margin-top: 8px;
+            }
+            .hero {
+                padding: 140px 0 60px;
+                min-height: auto;
+            }
+            .hero h1 {
+                font-size: 2.6rem;
+            }
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            .hero-stats {
+                gap: 28px;
+                flex-wrap: wrap;
+            }
+            .hero-stats-item .number {
+                font-size: 1.8rem;
+            }
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+            .timeline-item {
+                padding: 24px 20px;
+            }
+            .timeline-item .meta {
+                flex-direction: column;
+                gap: 4px;
+            }
+            .edu-grid {
+                grid-template-columns: 1fr;
+            }
+            .skills-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .contact-wrap {
+                padding: 28px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .skills-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .hero-avatar {
+                width: 210px;
+                height: 210px;
+                font-size: 3.5rem;
+            }
+            .btn-primary,
+            .btn-secondary {
+                padding: 12px 24px;
+                font-size: 0.85rem;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .gallery-card { flex-basis:100%; }
+            .gallery-arrow.prev { left:8px; }
+            .gallery-arrow.next { right:8px; }
+            .gallery-caption strong { font-size:.9rem; }
+            .gallery-caption span { font-size:.72rem; }
+        }
+
+        @media (min-width: 561px) and (max-width: 900px) {
+            .gallery-card { flex-basis:calc((100% - 20px) / 2); }
+            .gallery-arrow.prev { left:8px; }
+            .gallery-arrow.next { right:8px; }
+            .credential-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+        }
+
+        @media (max-width: 560px) {
+            .hero-text { text-align:justify; }
+            .credential-grid { grid-template-columns:1fr; }
+            .achievement-main, .achievement-main img { min-height:320px; }
+            .lead-card { padding:24px; }
+            .gallery-filter { margin-top:-10px; }
+            .gallery-arrow { width:42px; height:42px; }
+            .gallery-meta { margin-top:12px; }
+        }
+            @media (min-width: 769px) { .skills-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+    </style>
+</head>
+<body>
+
+    <!-- ─── Particles ─── -->
+    <div class="bg-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- ─── Navigation ─── -->
+    <nav id="navbar">
+        <div class="container nav-inner">
+            <div class="logo">Rakib<span>.</span></div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero" class="active">Home</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#gallery">Work</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#certifications">Credentials</a></li>
+                <li><a href="#contact" class="nav-cta">Contact</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ─── Hero ─── -->
+    <section class="hero" id="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-leaf" style="margin-right:8px;"></i> Food Innovation &amp; Quality
+                </div>
+                <h1>
+                    Md Rakib <br /><span class="highlight">Hasan</span>
+                </h1>
+                <div class="hero-subtitle">
+                    <strong>Food Technologist</strong> · R&amp;D · QA/QC
+                </div>
+                <p class="hero-text">
+                    Food Engineering and Food Innovation professional with <strong style="color:var(--secondary);">3+ years</strong> of
+                    industrial R&amp;D experience across beverage and dairy product development, formulation, sensory evaluation,
+                    shelf-life, food safety and technical documentation. RSPH Level 3 HACCP certified and ISO 22000:2018 trained.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn-primary">
+                        <i class="fas fa-paper-plane"></i> Get in Touch
+                    </a>
+                    <a href="#experience" class="btn-secondary">
+                        <i class="fas fa-chevron-down"></i> View Work
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stats-item">
+                        <span class="number">3+</span>
+                        <span class="label">Years R&amp;D</span>
+                    </div>
+                    <div class="hero-stats-item">
+                        <span class="number">15+</span>
+                        <span class="label">Products Launched</span>
+                    </div>
+                    <div class="hero-stats-item">
+                        <span class="number">2</span>
+                        <span class="label">Publications</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-avatar">
+                    <img class="hero-photo" src="assets/headshot-relaxed.webp" alt="Md Rakib Hasan professional headshot">
+                </div>
+                <div class="floating-badge" style="top:5%; right:-8%;">
+                    <i class="fas fa-flask"></i> R&amp;D
+                </div>
+                <div class="floating-badge" style="bottom:15%; left:-10%;">
+                    <i class="fas fa-clipboard-check"></i> QA/QC
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Skills ─── -->
+    <section class="section" id="skills">
+        <div class="container">
+            <div class="section-header">
+                <span class="tag">Expertise</span>
+                <h2>Core <span>Competencies</span></h2>
+                <p>Quality assurance, product development, food safety &amp; sensory science.</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="icon"><i class="fas fa-microscope"></i></div>
+                    <h4>QA/QC &amp; HACCP</h4>
+                    <p>RSPH Level 3 HACCP, ISO 22000, GMP, SOPs &amp; compliance.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="icon"><i class="fas fa-flask"></i></div>
+                    <h4>R&amp;D &amp; NPD</h4>
+                    <p>Formulation, pilot-scale trials &amp; commercialisation.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="icon"><i class="fas fa-utensils"></i></div>
+                    <h4>Sensory &amp; Shelf-life</h4>
+                    <p>Sensory evaluation, stability assessment &amp; monitoring.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="icon"><i class="fas fa-file-alt"></i></div>
+                    <h4>Technical Documentation</h4>
+                    <p>SOPs, batch records &amp; manufacturing instructions.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="icon"><i class="fas fa-chart-bar"></i></div>
+                    <h4>Data &amp; Research</h4>
+                    <p>Qualtrics, IBM SPSS, experimental design &amp; interpretation.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="icon"><i class="fas fa-boxes"></i></div>
+                    <h4>Production Support</h4>
+                    <p>Process control, raw material evaluation &amp; team supervision.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Experience ─── -->
+    <section class="section" id="experience" style="background: rgba(255,255,255,0.01);">
+        <div class="container">
+            <div class="section-header">
+                <span class="tag">Career</span>
+                <h2>Professional <span>Experience</span></h2>
+                <p>Industrial R&amp;D, production support &amp; food safety leadership.</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="meta">
+                        <span class="title">Supervisor</span>
+                        <span class="date">2026 – Present</span>
+                    </div>
+                    <div class="company">Langosteria UK, London</div>
+                    <ul>
+                        <li>Supervise daily restaurant operations and team performance.</li>
+                        <li>Conduct food safety, hygiene and HACCP checks.</li>
+                        <li>Monitor food handling, storage, temperature and cleanliness.</li>
+                        <li>Train staff on food safety, SOPs and service standards.</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="meta">
+                        <span class="title">Research &amp; Development Executive</span>
+                        <span class="date">Oct 2022 – Jan 2025</span>
+                    </div>
+                    <div class="company">Akij Food &amp; Beverage Ltd., Bangladesh</div>
+                    <ul>
+                        <li>Developed &amp; optimised beverage and dairy formulations from lab to pilot scale.</li>
+                        <li>Led NPD trials for fruit drinks, electrolyte drinks, malt beverages &amp; flavoured drinks.</li>
+                        <li>Prepared SOPs, technical reports, batch documentation &amp; manufacturing instructions.</li>
+                        <li>Conducted sensory evaluation, shelf-life &amp; stability studies.</li>
+                        <li>Coordinated with QA/QC teams to ensure regulatory compliance.</li>
+                        <li>Supervised 50+ production staff ensuring GMP and hygiene compliance.</li>
+                        <li>Evaluated alternative raw materials &amp; packaging to reduce costs.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Education ─── -->
+    <section class="section" id="education">
+        <div class="container">
+            <div class="section-header">
+                <span class="tag">Academic</span>
+                <h2>Education</h2>
+                <p>Advanced training in food innovation, engineering &amp; sustainable systems.</p>
+            </div>
+            <div class="edu-grid">
+                <div class="edu-card">
+                    <div class="degree">MSc Food Innovation</div>
+                    <div class="school">University of Greenwich, London, UK</div>
+                    <div class="year">2025 – 2026</div>
+                    <div class="detail">
+                        <strong style="color:var(--secondary);">Dissertation:</strong> Consumer Perceptions towards Smart Packaging in Bangladesh.
+                        Quantitative research using Qualtrics &amp; IBM SPSS. Module: Alternative Proteins.
+                    </div>
+                </div>
+                <div class="edu-card">
+                    <div class="degree">MSc Food &amp; Process Engineering</div>
+                    <div class="school">HSTU, Bangladesh</div>
+                    <div class="year">2021 – 2022</div>
+                    <div class="detail">
+                        Advanced study in food processing, packaging &amp; quality systems.
+                    </div>
+                </div>
+                <div class="edu-card">
+                    <div class="degree">BSc Food &amp; Process Engineering</div>
+                    <div class="school">HSTU, Bangladesh</div>
+                    <div class="year">2016 – 2021</div>
+                    <div class="detail">
+                        Foundation in food engineering, thermodynamics, unit operations &amp; food chemistry.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Research ─── -->
+    <section class="section" id="research" style="background: rgba(255,255,255,0.01);">
+        <div class="container">
+            <div class="section-header">
+                <span class="tag">Research</span>
+                <h2>Publications &amp; <span>Projects</span></h2>
+                <p>Academic research in food packaging, drying kinetics &amp; quality assessment.</p>
+            </div>
+            <div class="research-grid">
+                <div class="research-card">
+                    <span class="badge">Publication</span>
+                    <h4>Effect of Temperature on Drying Kinetics, Physico-Chemical Properties &amp; Antioxidant Activity of Cabinet Dried Whole Jujubes</h4>
+                    <p>2025 · DOI: 10.53430/ijmru.2025.9.2.0021</p>
+                    <a href="#" class="pub-link" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> View Publication
+                    </a>
+                </div>
+                <div class="research-card">
+                    <span class="badge">Under Review</span>
+                    <h4>Effect of Microwave Heating on Quality Attributes of Sugarcane Juice During Refrigerated Storage</h4>
+                    <p>Submitted to Journal of Food and Nutrition Research.</p>
+                    <span style="display:inline-block;margin-top:8px;font-size:0.85rem;color:var(--gray);">
+                        <i class="fas fa-microscope"></i> Experimental assessment &amp; data interpretation
+                    </span>
+                </div>
+                <div class="research-card">
+                    <span class="badge">Project</span>
+                    <h4>Gelatin-CMC Biodegradable Packaging Films</h4>
+                    <p>Research Assistant · HSTU · UGC-funded project.</p>
+                    <p style="margin-top:6px;font-size:0.9rem;color:var(--gray);">
+                        Development &amp; laboratory evaluation of biodegradable films for baked products.
+                    </p>
+                </div>
+                <div class="research-card">
+                    <span class="badge">Dissertation</span>
+                    <h4>Consumer Perceptions towards Smart Packaging in Bangladesh</h4>
+                    <p>MSc Food Innovation · University of Greenwich</p>
+                    <p style="margin-top:6px;font-size:0.9rem;color:var(--gray);">
+                        Quantitative study using Qualtrics &amp; IBM SPSS · Survey design &amp; statistical analysis.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ─── Work & Research Gallery ─── -->
+    <section class="section" id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <span class="tag">Selected Work</span>
+                <h2>R&amp;D <span>Gallery</span></h2>
+                <p>Selected evidence of product development, laboratory testing, industrial environments, technical events and professional engagement.</p>
+            </div>
+            <div class="gallery-filter" id="galleryFilter">
+                <button class="active" data-filter="all">All</button>
+                <button data-filter="rd">R&amp;D</button>
+                <button data-filter="lab">Laboratory</button>
+                <button data-filter="industry">Industry</button>
+                <button data-filter="events">Events</button>
+                <button data-filter="life">Leadership</button>
+            </div>
+            <div class="gallery-shell">
+                <button class="gallery-arrow prev" id="galleryPrev" type="button" aria-label="Previous gallery slide"><i class="fas fa-chevron-left"></i></button>
+                <div class="gallery-viewport">
+                    <div class="gallery-grid" id="galleryGrid">
+                        <article class="gallery-card" data-cat="industry"><img src="assets/photos/CQEG2994.webp" alt="Beverage production line"><div class="gallery-caption"><strong>Beverage Production</strong><span>Commercial processing and product manufacture</span></div></article>
+                        <article class="gallery-card" data-cat="industry"><img src="assets/photos/EPQC5932.webp" alt="Tetra Brik aseptic production equipment"><div class="gallery-caption"><strong>Industrial Scale-Up</strong><span>Commercial process and plant environment</span></div></article>
+                        <article class="gallery-card" data-cat="industry"><img src="assets/photos/EPRY0061.webp" alt="KRONES production system"><div class="gallery-caption"><strong>Plant Technology</strong><span>Filling, packaging and production systems</span></div></article>
+                        <article class="gallery-card" data-cat="rd"><img src="assets/photos/FGKM8609.webp" alt="Rakib Hasan with product sample"><div class="gallery-caption"><strong>Product Evaluation</strong><span>Review of a market-ready beverage sample</span></div></article>
+                        <article class="gallery-card" data-cat="events"><img src="assets/photos/GMBT3734.webp" alt="Food research symposium"><div class="gallery-caption"><strong>Research Symposium</strong><span>Food research for industrial application</span></div></article>
+                        <article class="gallery-card" data-cat="events"><img src="assets/photos/IJPI1167.webp" alt="BAPA FoodPro International Expo"><div class="gallery-caption"><strong>FoodPro Expo</strong><span>Industry exposure and technical networking</span></div></article>
+                        <article class="gallery-card" data-cat="events"><img src="assets/photos/IMG_2762.webp" alt="Professional team at BAPA FoodPro"><div class="gallery-caption"><strong>Industry Networking</strong><span>Professional engagement and collaboration</span></div></article>
+                        <article class="gallery-card" data-cat="events"><img src="assets/photos/IMG_3865.webp" alt="Technical presentation on food innovation"><div class="gallery-caption"><strong>Technical Presentation</strong><span>Innovation planning and technical communication</span></div></article>
+                        <article class="gallery-card" data-cat="events"><img src="assets/photos/graduation-ceremony.webp" alt="Graduation ceremony with university officials"><div class="gallery-caption"><strong>Graduation Ceremony</strong><span>Academic milestone and postgraduate achievement</span></div></article>
+                        <article class="gallery-card" data-cat="life"><img src="assets/photos/IMG_0084.webp" alt="Food Engineers Association football team"><div class="gallery-caption"><strong>Team Participation</strong><span>Youth Football Club League</span></div></article>
+                        <article class="gallery-card" data-cat="lab"><img src="assets/photos/IMG_9410.webp" alt="Laboratory product analysis"><div class="gallery-caption"><strong>Laboratory Analysis</strong><span>Experimental preparation and quality assessment</span></div></article>
+                        <article class="gallery-card" data-cat="lab"><img src="assets/photos/IMG_9433.webp" alt="Laboratory computer analysis"><div class="gallery-caption"><strong>Data &amp; Analysis</strong><span>Technical documentation and interpretation</span></div></article>
+                        <article class="gallery-card" data-cat="lab"><img src="assets/photos/IMG_9456.webp" alt="Beverage testing in R&amp;D laboratory"><div class="gallery-caption"><strong>Beverage Testing</strong><span>Application testing and sample preparation</span></div></article>
+                        <article class="gallery-card" data-cat="lab"><img src="assets/photos/IMG_9457.webp" alt="R&amp;D beverage formulation work"><div class="gallery-caption"><strong>Formulation Work</strong><span>Bench-scale development and evaluation</span></div></article>
+                        <article class="gallery-card" data-cat="lab"><img src="assets/photos/IMG_9419.webp" alt="Laboratory quality assessment"><div class="gallery-caption"><strong>Quality Assessment</strong><span>Controlled laboratory evaluation</span></div></article>
+                        <article class="gallery-card" data-cat="rd"><img src="assets/photos/IMG_9438.webp" alt="Technical review in laboratory"><div class="gallery-caption"><strong>Technical Review</strong><span>Instrument-assisted product assessment</span></div></article>
+                    </div>
+                </div>
+                <button class="gallery-arrow next" id="galleryNext" type="button" aria-label="Next gallery slide"><i class="fas fa-chevron-right"></i></button>
+                <div class="gallery-meta"><span id="galleryCount" class="count">1 / 5</span><span>Use the arrows to browse selected work</span></div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Certifications ─── -->
+    <section class="section" id="certifications" style="padding-top:40px;">
+        <div class="container">
+            <div class="section-header">
+                <span class="tag">Credentials</span>
+                <h2>Certifications &amp; <span>Evidence</span></h2>
+                <p>Selected food safety and industrial training credentials, presented for quick review.</p>
+            </div>
+            <div class="credential-grid">
+                <article class="credential-card">
+                    <div class="credential-preview"><img src="assets/certificates/iso22000-preview.webp" alt="ISO 22000:2018 certificate preview"></div>
+                    <div class="credential-body"><span class="mini"><i class="fas fa-shield-halved"></i> Food Safety</span><h4>ISO 22000:2018 Food Safety Management Systems</h4><p>Alcumus Certificate of Achievement, May 2023.</p><div class="credential-actions"><a class="mini-btn" href="certificates/iso22000.jpg" target="_blank"><i class="fas fa-file-pdf"></i> Open PDF</a></div></div>
+                </article>
+                <article class="credential-card">
+                    <div class="credential-preview"><img src="assets/certificates/haccp-preview.webp" alt="RSPH Level 3 HACCP certificate preview"></div>
+                    <div class="credential-body"><span class="mini"><i class="fas fa-microscope"></i> HACCP</span><h4>RSPH Level 3 Award in Understanding how to Develop a HACCP Plan</h4><p>PASS, awarded 26 August 2025.</p><div class="credential-actions"><a class="mini-btn" href="certificates/haccp.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Open PDF</a></div></div>
+                </article>
+                <article class="credential-card">
+                    <div class="credential-preview"><img src="assets/certificates/transcom-preview.webp" alt="Transcom industrial attachment certificate preview"></div>
+                    <div class="credential-body"><span class="mini"><i class="fas fa-industry"></i> Industrial Training</span><h4>Transcom Beverages Industrial Attachment &amp; Agricultural Extension</h4><p>HSTU industrial attachment and field training documentation.</p><div class="credential-actions"><a class="mini-btn" href="certificates/transcom.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Open PDF</a></div></div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Achievements ─── -->
+    <section class="section" id="achievements" style="background: rgba(255,255,255,0.01);">
+        <div class="container">
+            <div class="section-header">
+                <span class="tag">Beyond Work</span>
+                <h2>Leadership &amp; <span>Achievements</span></h2>
+                <p>Selected professional milestones, leadership experience and downloadable career documents.</p>
+            </div>
+            <div class="achievement-grid">
+                <div class="achievement-main"><img src="assets/photos/football-trophy.webp" alt="Food Engineers Association football trophy achievement"><div><strong>Food Engineers' Association Football League</strong><span>Team participation and Season I championship achievement</span></div></div>
+                <div class="achievement-side">
+                    <div class="lead-card"><i class="fas fa-users"></i><h4>Leadership &amp; Engagement</h4><p>Founding Member, Skill Development Club of HSTU. Students' Welfare Secretary, Food Engineers' Association, HSTU. Industry participation through symposiums, exhibitions and technical networking.</p></div>
+                    <div class="lead-card documents-card"><i class="fas fa-file-arrow-down"></i><h4>Documents</h4><p>Professional and academic versions, plus the full portfolio PDF.</p>
+                        <div class="document-links">
+                            <a class="document-link" href="documents/Professional-CV-Rakib-Hasan.pdf" download><i class="fas fa-briefcase"></i> Professional CV</a>
+                            <a class="document-link" href="documents/Academic-CV-Md-Rakib-Hasan.pdf" download><i class="fas fa-graduation-cap"></i> Academic CV</a>
+                            <a class="document-link" href="documents/Portfolio-Rakib-Hasan.pdf" download><i class="fas fa-file-lines"></i> Portfolio PDF</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Contact ─── -->
+    <section class="section" id="contact" style="padding-top:40px;">
+        <div class="container">
+            <div class="contact-wrap">
+                <div>
+                    <h2>Let's <span>Connect</span></h2>
+                    <p>
+                        Open to R&amp;D, QA/QC, production &amp; research opportunities.
+                        Feel free to reach out for collaboration or discussion.
+                    </p>
+                    <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+                        <span style="background:rgba(255,255,255,0.04);padding:6px 18px;border-radius:100px;font-size:0.8rem;color:var(--gray);border:1px solid var(--border);">
+                            <i class="fas fa-map-pin" style="color:var(--secondary);"></i> London, UK
+                        </span>
+                        <span style="background:rgba(255,255,255,0.04);padding:6px 18px;border-radius:100px;font-size:0.8rem;color:var(--gray);border:1px solid var(--border);">
+                            <i class="fas fa-clock" style="color:var(--secondary);"></i> Available for work
+                        </span>
+                    </div>
+                </div>
+                <div class="contact-links">
+                    <a href="mailto:rakibhasan24.rh@gmail.com">
+                        <i class="fas fa-envelope"></i> rakibhasan24.rh@gmail.com
+                    </a>
+                    <a href="tel:+4407404127872">
+                        <i class="fas fa-phone-alt"></i> +44 7404 127872
+                    </a>
+                    <a href="https://www.linkedin.com/in/rakib-hasan24" target="_blank" rel="noopener">
+                        <i class="fab fa-linkedin-in"></i> linkedin.com/in/rakib-hasan24
+                    </a>
+                    <a href="#">
+                        <i class="fas fa-map-marker-alt"></i> London, United Kingdom
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Footer ─── -->
+    <footer>
+        <div class="container">
+            <p>
+                &copy; 2026 <span>Md Rakib Hasan</span> — Food Technologist.
+                Food Innovation · R&amp;D · QA/QC
+            </p>
+        </div>
+    </footer>
+
+    <!-- ─── JavaScript ─── -->
+    <script>
+        // ─── Navbar scroll ───
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 40);
+        });
+
+        // ─── Hamburger ───
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('open');
+        });
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('open');
+            });
+        });
+
+        // ─── Active nav link ───
+        const sections = document.querySelectorAll('section[id]');
+        const navItems = document.querySelectorAll('.nav-links a:not(.nav-cta)');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                if (window.scrollY >= section.offsetTop - 120) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navItems.forEach(link => {
+                link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+            });
+        });
+
+
+        // --- Gallery filters, carousel and lightbox ---
+        const filterBtns = document.querySelectorAll('#galleryFilter button');
+        const galleryGrid = document.getElementById('galleryGrid');
+        const allGalleryCards = Array.from(document.querySelectorAll('#galleryGrid .gallery-card'));
+        const galleryPrev = document.getElementById('galleryPrev');
+        const galleryNext = document.getElementById('galleryNext');
+        const galleryCount = document.getElementById('galleryCount');
+        let galleryIndex = 0;
+        let galleryVisibleCards = allGalleryCards.slice();
+
+        function visiblePerPage() {
+            if (window.innerWidth <= 560) return 1;
+            if (window.innerWidth <= 900) return 2;
+            return 3;
+        }
+        function maxGalleryIndex() {
+            return Math.max(0, galleryVisibleCards.length - visiblePerPage());
+        }
+        function updateGallery() {
+            const stepCard = galleryGrid.querySelector('.gallery-card:not(.is-hidden)');
+            if (!stepCard) return;
+            const gap = 20;
+            const step = stepCard.getBoundingClientRect().width + gap;
+            galleryGrid.style.transform = `translateX(-${galleryIndex * step}px)`;
+            const max = maxGalleryIndex();
+            galleryPrev.disabled = galleryIndex <= 0;
+            galleryNext.disabled = galleryIndex >= max;
+            const page = Math.min(Math.ceil((galleryIndex + 1) / visiblePerPage()), Math.ceil(galleryVisibleCards.length / visiblePerPage()));
+            const pages = Math.max(1, Math.ceil(galleryVisibleCards.length / visiblePerPage()));
+            galleryCount.textContent = `${page} / ${pages}`;
+        }
+        function applyGalleryFilter(filter) {
+            galleryVisibleCards = [];
+            allGalleryCards.forEach(card => {
+                const show = filter === 'all' || card.dataset.cat === filter;
+                card.classList.toggle('is-hidden', !show);
+                if (show) galleryVisibleCards.push(card);
+            });
+            galleryIndex = 0;
+            requestAnimationFrame(updateGallery);
+        }
+        filterBtns.forEach(btn => btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            applyGalleryFilter(btn.dataset.filter);
+        }));
+        galleryPrev.addEventListener('click', () => { galleryIndex = Math.max(0, galleryIndex - visiblePerPage()); updateGallery(); });
+        galleryNext.addEventListener('click', () => { galleryIndex = Math.min(maxGalleryIndex(), galleryIndex + visiblePerPage()); updateGallery(); });
+        window.addEventListener('resize', updateGallery);
+        applyGalleryFilter('all');
+
+        const lightbox = document.createElement('div');
+        lightbox.className = 'lightbox';
+        lightbox.innerHTML = '<button class="lightbox-close" aria-label="Close image">&times;</button><img src="" alt=""><div class="lightbox-label"></div>';
+        document.body.appendChild(lightbox);
+        const lightboxImg = lightbox.querySelector('img');
+        const lightboxLabel = lightbox.querySelector('.lightbox-label');
+        const closeLightbox = () => lightbox.classList.remove('open');
+        allGalleryCards.forEach(card => card.addEventListener('click', () => {
+            const img = card.querySelector('img');
+            const title = card.querySelector('strong')?.textContent || '';
+            lightboxImg.src = img.src; lightboxImg.alt = img.alt; lightboxLabel.textContent = title; lightbox.classList.add('open');
+        }));
+        lightbox.addEventListener('click', e => { if (e.target === lightbox || e.target.classList.contains('lightbox-close')) closeLightbox(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+        // ─── Reveal animations ───
+        const items = document.querySelectorAll('.skill-card, .timeline-item, .edu-card, .research-card, .cert-tag, .credential-card, .hero-stats-item');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.08 });
+        items.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
